@@ -1,0 +1,60 @@
+
+services:
+  db:
+    image: postgres:16
+    container_name: pg_sistema_web
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sistema_web
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sistema_web"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  backend:
+    build: ./src/backend
+    container_name: backend_sistema_web
+    restart: unless-stopped
+    environment:
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      DB_NAME: sistema_web
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_HOST: db   # <- usa o nome do serviço, não localhost
+      DB_PORT: "5432"
+      JWT_SECRET: change_me_please
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./src/backend:/app
+    working_dir: /app
+    command: ["npm", "run", "start"]
+    
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: pgadmin_sistema_web
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+       db:
+        condition: service_healthy
+
+
+
+volumes:
+  pgdata:
+
+  
