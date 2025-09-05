@@ -1,5 +1,13 @@
 
 services:
+
+  adminer:
+    image: adminer
+    container_name: adminer_sistema_web
+    restart: always
+    ports:
+    - "8080:8080"
+
   db:
     image: postgres:16
     container_name: pg_sistema_web
