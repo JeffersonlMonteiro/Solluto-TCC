@@ -17,7 +17,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -36,7 +36,7 @@ services:
       DB_PASS: postgres
       DB_HOST: db   # <- usa o nome do serviço, não localhost
       DB_PORT: "5432"
-      JWT_SECRET: change_me_please
+      JWT_SECRET: senha_ultra_secreta
     ports:
       - "3000:3000"
     depends_on:

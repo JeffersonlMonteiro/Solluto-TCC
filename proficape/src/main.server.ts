@@ -6,4 +6,4 @@ import { enableProdMode } from '@angular/core';
 
 enableProdMode();
 
-export default bootstrapApplication(AppComponent, appConfig);
+export default () => bootstrapApplication(AppComponent, appConfig);

@@ -16,7 +16,7 @@ const Pedido = require('./Pedido');
 // Associações
 Usuario.hasMany(Log, { foreignKey: 'USU_INT_ID' });
 Log.belongsTo(Usuario, { foreignKey: 'USU_INT_ID' });
-// ... (other associations as previously provided)
+// ... (outras associações)
 
 module.exports = {
   sequelize,

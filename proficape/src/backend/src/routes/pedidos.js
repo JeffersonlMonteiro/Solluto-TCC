@@ -4,6 +4,7 @@ const { Pedido, PedidoCliente, Produto, EstoqueProduto, EstoqueMovimentacao, Cli
 const authMiddleware = require('../middlewares/auth');
 const { sequelize } = require('../models');
 
+
 // Criar pedido
 router.post('/', authMiddleware, async (req, res) => {
   const { CLI_INT_ID, PRO_INT_ID, PEC_INT_QNT, FOP_INT_ID, END_INT_ID } = req.body;

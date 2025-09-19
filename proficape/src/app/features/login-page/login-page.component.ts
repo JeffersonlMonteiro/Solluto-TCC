@@ -18,14 +18,19 @@ export class LoginPageComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
   
- OnLogin() 
-  {
+  goToRegister() {
+    this.router.navigate(['/signup']);
+  }
+  goToRecovery() {
+    this.router.navigate(['/recovery']);
+  }
+  OnLogin() {
     if(!this.email || !this.password) {
       this.mensagem = 'Por favor, preencha todos os campos.';
       return;
     }
 
-    this.authService.login({ USU_VAR_EMAIL: this.email, USU_VAR_SENHA: this.password }).subscribe({
+  this.authService.login(this.email, this.password).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
         this.mensagem = 'Login bem-sucedido!';
@@ -36,4 +41,5 @@ export class LoginPageComponent {
       }
     });      
   }
+
 }

@@ -1,5 +1,6 @@
+
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/database'); // Corrigido para evitar importação circular
 
 const Usuario = sequelize.define('Usuario', {
   USU_INT_ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
@@ -12,7 +13,7 @@ const Usuario = sequelize.define('Usuario', {
   USU_TMS_DTALT: { type: DataTypes.DATE, allowNull: false },
   USU_INT_COD_ALT: { type: DataTypes.INTEGER, allowNull: false },
   USU_VAR_RESET_TOKEN: { type: DataTypes.STRING(255), allowNull: true },
-  USU_TMS_RESET_EXPIRA: { type: DataTypes.DATE, allowNull: true },
+  USU_TMS_RESET_EXP: { type: DataTypes.DATE, allowNull: true },
   USU_TXT_IMGPATH: { type: DataTypes.TEXT }
 }, { tableName: 'tbl_usuario', timestamps: false });
 
