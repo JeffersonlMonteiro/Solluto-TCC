@@ -1,0 +1,9 @@
+{
+  "name": "Sollutto TCC", /*Nome de identificação, aparece quando se cria*/
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20", /*Define qual Sistema operacional base o codespace vai usar */
+  "features": { 
+    "ghcr.io/devcontainers/features/docker-in-docker:2":{}
+  }, /*Coisas que vão ser adicionadas sob a imagem base, docker-in-docker é para usar o docker compose. sem ele o comando docker não vai existir no codespace*/
+  "forwardPorts":[3000, 4200], /* Avisa ao Codespace para deoxar essas portas acessiveis por link no navegador. 3000 roda o backend, 4200 roda o Angular*/
+  "postCreateCommand": "cd proficape && docker compose up -d db adminer pgadmin && cd src/backend && npm install && cd ../.. && npm install" /*depois de criar o ambiente roda npm install automaticamente*/
+}
