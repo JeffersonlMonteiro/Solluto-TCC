@@ -1,5 +1,5 @@
 {
-  "name": "Sollutto TCC", /*Nome de identificação, aparece quando se cria*/
+  "name": "Solluto TCC", /*Nome de identificação, aparece quando se cria*/
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20", /*Define qual Sistema operacional base o codespace vai usar */
   "features": { 
     "ghcr.io/devcontainers/features/docker-in-docker:2":{}
