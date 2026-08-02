@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = window.location.hostname.includes('github.dev')
+      ? `https://${window.location.hostname.replace('-4200.', '-3000.')}/api/auth`
+      : 'http://localhost:3000/api/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -26,4 +28,9 @@ export class AuthService {
   resetPassword(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/reset-password`, data);
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
 }

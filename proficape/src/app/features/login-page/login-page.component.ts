@@ -34,7 +34,7 @@ export class LoginPageComponent {
       next: (res) => {
         localStorage.setItem('token', res.token);
         this.mensagem = 'Login bem-sucedido!';
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         this.mensagem = 'Erro no login: ' + (err.error?.error || 'Erro desconhecido');

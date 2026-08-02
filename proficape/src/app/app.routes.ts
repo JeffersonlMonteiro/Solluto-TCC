@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 import { HomePageComponent } from './features/home-page/home-page.component';
 import { LoginPageComponent } from './features/login-page/login-page.component';    
 import { SignupPageComponent } from './features/signup-page/signup-page.component';
@@ -12,7 +13,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent
+    component: HomePageComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'login',

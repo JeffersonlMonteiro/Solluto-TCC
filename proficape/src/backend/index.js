@@ -66,16 +66,18 @@ app.get('/logout', (req, res) => {
 
 // Middlewares
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:4200',
-    'http://localhost:4200',
-    'http://127.0.0.1:4200'
-  ],
+  origin: function (origin, callback) {
+    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')|| origin.endsWith('github.dev')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Origem não permitida pelo CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
+    
 // Rotas
 app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/produtos', require('./src/routes/produtos'));
