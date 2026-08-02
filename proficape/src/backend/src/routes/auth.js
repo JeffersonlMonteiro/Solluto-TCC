@@ -96,8 +96,7 @@ router.post('/forgot-password', async (req, res) => {
   await usuario.save();
 
   try {
-    const { token: accessToken } = await oAuth2Client.getAccessToken(); // 🔥 corrigido
-
+    const { token: accessToken } = await oAuth2Client.getAccessToken();
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
