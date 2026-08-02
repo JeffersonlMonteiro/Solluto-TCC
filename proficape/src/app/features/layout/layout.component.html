@@ -1,0 +1,27 @@
+<div class="app-shell">
+    <aside class="sidebar">
+        <nav>
+           <a routerLink="/home" routerLinkActive="active" class="icon-link">🏠</a> 
+           <a routerLink="/catalogo" routerLinkActive="active" class="icon-link">📚</a>
+           <a routerLink="/financeiro" routerLinkActive="active" class="icon-link">💰</a>
+           <a routerLink="/estoque" routerLinkActive="active" class="icon-link">📦</a>
+           <a routerLink="/pedidos" routerLinkActive="active" class="icon-link">📝</a>
+        </nav>
+    </aside>
+
+    <main class="main-area">
+        <header class="topbar">
+            <input type="text" placeholder="Buscar..." class="search-input" />
+            
+    <div class="user-area">
+        <span>👤 Usuário</span>
+        <span>⚙️</span>
+    </div>
+</header>
+
+
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.app-shell{
+    display: flex;
+    height: 100vh;
+    background: #f2d9b8;
+}
+
+.sidebar {
+    width: 70px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    gap: 24px;
+
+.icon-link {
+    font-size: 22px;
+    text-decoration: none;
+    opacity: 0.6;    
+
+&.active {
+    opacity: 1;
+    }
+  }
+}
+
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+.search-input {
+    flex: 1;
+    max-width: 400px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border:none;
+}
+
+.user-area {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+}
+
+.content {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
